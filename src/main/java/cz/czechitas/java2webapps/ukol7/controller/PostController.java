@@ -5,6 +5,7 @@ import cz.czechitas.java2webapps.ukol7.service.PostService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,7 +49,7 @@ public class PostController {
 
 
     @GetMapping("/admin")
-    public ModelAndView seznamAdmin(@PageableDefault(size = 20) Pageable pageable) {
+    public ModelAndView seznamAdmin(@PageableDefault(sort = "published", direction = Sort.Direction.DESC, size = 20) Pageable pageable) {
         return new ModelAndView("seznamAdmin").addObject("prispevky", postService.findAll(pageable));
     }
 

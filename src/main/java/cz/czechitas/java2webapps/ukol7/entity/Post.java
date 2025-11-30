@@ -34,7 +34,6 @@ public class Post {
     @NotBlank
     private String body;
 
-    @PastOrPresent
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate published;
 
