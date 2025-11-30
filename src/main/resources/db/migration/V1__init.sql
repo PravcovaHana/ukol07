@@ -67,7 +67,7 @@ NULL
 'jak-na-prvni-byt',
 'Tomáš Jílek',
 'Jak na první byt: rady, na které se zapomíná',
-'Koupě prvního bytu může být stresující zážitek.',
+'Koupě prvního bytu může být <b>stresující</b> zážitek.',
 'V článku se podíváme na skryté náklady, nejčastější chyby při komunikaci s realitkou a tipy, jak vyjednat lepší cenu...',
 '2025-06-01'
 ),
@@ -211,14 +211,14 @@ NULL
 'jak-si-uzit-volno',
 'Ondřej Malík',
 'Jak si užít volno, aniž byste měli pocit, že jen prokrastinujete',
-'Volný čas často neumíme využít naplno.',
+'<b>Volný čas</b> často neumíme využít naplno.',
 'Povíme si, jak najít rovnováhu mezi odpočinkem a pocitem smysluplnosti...',
 '2025-04-27'
 ),
 ('urban-garden-tips', 'Lukáš Novák', 'Urban Gardening: Jak začít v malém', 'Pěstování zeleniny ve městě není nemožné.', 'Článek o tom, jak si založit vlastní malou zahrádku na balkoně nebo parapetu.', '2025-06-12'),
 ('morning-routine', 'Jana Černá', 'Ranní rutina pro produktivní den', 'Jak správně nastartovat svůj den.', 'Tipy a triky pro efektivní ranní rutinu, která zvýší tvou produktivitu.', NULL),
 ('ai-in-education', 'Petr Svoboda', 'Umělá inteligence ve školství', 'AI mění způsob, jak se učíme.', 'Přehled využití AI ve vzdělávání, od virtuálních učitelů po personalizované výukové plány.', '2025-07-01'),
-('travel-japan', 'Eva Malá', 'Cestování po Japonsku', 'Průvodce pro začátečníky.', 'Zkušenosti z cestování po Japonsku, tipy na města, jídlo a kulturu.', NULL),
+('travel-japan', 'Eva Malá', 'Cestování po Japonsku', 'Průvodce pro začátečníky.', '<p>Zkušenosti z cestování po Japonsku, tipy na města, jídlo a kulturu.</p>', NULL),
 ('healthy-snacks', 'Martin Dvořák', '10 zdravých svačin do práce', 'Svačina, která tě udrží fit.', 'Seznam jednoduchých a chutných svačin, které se dají snadno připravit do práce.', '2025-05-20'),
 ('coding-best-practices', 'Anna Křížová', 'Nejlepší praktiky psaní kódu', 'Jak psát čistý a udržovatelný kód.', 'Praktické tipy a vzory pro vývojáře, které zlepší kvalitu vašeho kódu.', NULL),
 ('mental-health-tips', 'Tomáš Horák', 'Jak pečovat o duševní zdraví', 'Jednoduché kroky pro lepší pohodu.', 'Článek obsahuje techniky a rady, jak zvládat stres a zlepšit psychickou kondici.', '2025-08-10'),
@@ -234,5 +234,5 @@ NULL
 ('vegan-recipes', 'Martina Králová', 'Snadné veganské recepty', 'Chutné a rychlé jídlo bez masa.', 'Recepty na jednoduché a zdravé veganské pokrmy pro každodenní vaření.', '2025-07-22'),
 ('stress-management', 'Jan Novotný', 'Jak zvládat stres', 'Techniky pro lepší psychickou odolnost.', 'Praktické rady, jak snížit stres a zvýšit odolnost vůči náročným situacím.', NULL),
 ('cycling-tips', 'Barbora Malá', 'Tipy pro cyklisty začátečníky', 'Bezpečně a efektivně na kole.', 'Rady pro začínající cyklisty ohledně techniky, výbavy a bezpečnosti.', '2025-06-30'),
-('budget-cooking', 'Tomáš Kučera', 'Levné a chutné vaření', 'Jak uvařit jídlo do 100 Kč.', 'Tipy a recepty pro levné, rychlé a chutné pokrmy pro každodenní život.', NULL);
+('budget-cooking', 'Tomáš Kučera', 'Levné a chutné vaření', '<i>Jak uvařit jídlo do 100 Kč.</i>', 'Tipy a recepty pro levné, rychlé a chutné pokrmy pro každodenní život.', NULL);
 commit;
