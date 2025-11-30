@@ -30,7 +30,7 @@
 
     [@c.totalCount /]
     [@c.pager /]
-
-    <div><a href="/" class="btn btn-primary">Zpět na prohlížení</a></div>
+    <div><a href="/edit/novy" class="btn btn-primary">Nový příspěvek</a>
+        <a href="/" class="btn btn-primary">Zpět na prohlížení</a></div>
 
 [/@c.page]

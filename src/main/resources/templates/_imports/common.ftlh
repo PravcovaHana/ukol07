@@ -8,11 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>${title}</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-
-        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="/css/normalize.css"/>
-        <link rel="stylesheet" href="/css/skeleton.css"/>
-        <link rel="stylesheet" href="/css/main.css"/>
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="icon" type="image/png" href="/images/favicon.png"/>
     </head>
     <body>
@@ -39,17 +35,18 @@
 [#macro pager]
     <div class="pager">
         [@pagerLink page=0 active=prispevky.first text="⇤" /]
-        [@pagerLink page=prispevky.number - 1 active=prispevky.first text="←" /]
-        [@pagerLink page=prispevky.number + 1 active=prispevky.last text="→" /]
+        [@pagerLink page=prispevky.number - 1 active=!prispevky.hasPrevious() text="←" /]
+        [@pagerLink page=prispevky.number + 1 active=!prispevky.hasNext() text="→" /]
         [@pagerLink page=prispevky.totalPages - 1 active=prispevky.last text="⇥" /]
     </div>
+    <br />
 [/#macro]
 
 [#macro pagerLink page text active]
     [#if active]
-        <span class="page active">${text}</span>
+        <span class="page btn btn-primary active">${text}</span>
     [#else ]
-        <a href="${createURL({"size": prispevky.size, "page": page})}" class="page">${text}</a>
+        <a href="${createURL({"size": prispevky.size, "page": page})}" class="page btn btn-primary">${text}</a>
     [/#if]
 [/#macro]
 

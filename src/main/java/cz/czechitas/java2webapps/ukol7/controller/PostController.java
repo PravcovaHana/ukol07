@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,10 +32,6 @@ public class PostController {
         return new ModelAndView("seznam").addObject("prispevky", postService.list(pageable));
     }
 
-    @GetMapping("/admin")
-    public ModelAndView seznamAdmin(@PageableDefault(size = 20) Pageable pageable) {
-        return new ModelAndView("seznamAdmin").addObject("prispevky", postService.findAll(pageable));
-    }
 
     @GetMapping("/{slug}")
     public Object detail(@PathVariable String slug) {
@@ -47,40 +44,49 @@ public class PostController {
         }
     }
 
+
+
+
+    @GetMapping("/admin")
+    public ModelAndView seznamAdmin(@PageableDefault(size = 20) Pageable pageable) {
+        return new ModelAndView("seznamAdmin").addObject("prispevky", postService.findAll(pageable));
+    }
+
+
     @GetMapping("/edit/{slug}")
     public ModelAndView detailEdit(@PathVariable String slug) {
         return new ModelAndView("detailAdmin")
                 .addObject("prispevek", postService.singlePost(slug).orElseGet(() -> new Post()));
     }
 
-    @PostMapping("/{slug}")
-    public String ulozit(@PathVariable String slug, @Valid Post prispevek, BindingResult bindingResult) {
+    @PostMapping("/edit/{slug}")
+    public String ulozit(@PathVariable String slug, @ModelAttribute("prispevek") @Valid Post prispevek, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "detail";
+            return "detailAdmin";
         }
         postService.update(prispevek);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
-    @PostMapping(value = "/{slug}", params = "akce=smazat")
+    @PostMapping(value = "/edit/{slug}", params = "akce=smazat")
     public String smazat(@PathVariable String slug) {
         postService.delete(slug);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
-    @GetMapping("/novy")
+    @GetMapping("/edit/novy")
     public ModelAndView novy() {
-        return new ModelAndView("detail")
+        return new ModelAndView("detailAdmin")
                 .addObject("prispevek", new Post());
     }
 
-    @PostMapping("/novy")
-    public String pridat(@ModelAttribute("proispevek") @Valid Post prispevek, BindingResult bindingResult) {
+    @PostMapping("/edit/novy")
+    public String pridat(@ModelAttribute("prispevek") @Valid Post prispevek, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "detail";
+            return "detailAdmin";
         }
         postService.create(prispevek);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
 }

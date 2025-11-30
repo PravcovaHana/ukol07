@@ -1,7 +1,9 @@
 [#ftl]
 [@c.page title="${prispevek.title!}"]
     [@form.form method="post" bind="prispevek"]
-        <input type="hidden" name="id" value="${prispevek.id}" />
+        [#if prispevek.id??]
+            <input type="hidden" name="id" value="${prispevek.id}" />
+        [/#if]
         <div class="col-md-6">
             [@form.input label="Titulek" name="title" maxlength="255" required="required" /]
         </div>
