@@ -46,7 +46,7 @@
     [#if active]
         <span class="page btn btn-primary active">${text}</span>
     [#else ]
-        <a href="${createURL({"size": prispevky.size, "page": page})}" class="page btn btn-primary">${text}</a>
+        <a href="${createURL({"page": page})}" class="page btn btn-primary">${text}</a>
     [/#if]
 [/#macro]
 

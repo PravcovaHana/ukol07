@@ -4,16 +4,13 @@ import cz.czechitas.java2webapps.ukol7.entity.Post;
 import cz.czechitas.java2webapps.ukol7.service.PostService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
@@ -23,13 +20,18 @@ public class PostController {
 
     private final PostService postService;
 
+    @Value("${spring.blog.page-size}")
+    private int pageSize;
+
+
     @Autowired
     public PostController(PostService postService) {
         this.postService = postService;
     }
 
     @GetMapping("/")
-    public ModelAndView seznam(@PageableDefault(size = 20) Pageable pageable) {
+    public ModelAndView seznam(@RequestParam(defaultValue = "0") int page) {
+        Pageable pageable = PageRequest.of(page, pageSize);
         return new ModelAndView("seznam").addObject("prispevky", postService.list(pageable));
     }
 
@@ -49,7 +51,8 @@ public class PostController {
 
 
     @GetMapping("/admin")
-    public ModelAndView seznamAdmin(@PageableDefault(sort = "published", direction = Sort.Direction.DESC, size = 20) Pageable pageable) {
+    public ModelAndView seznamAdmin(@RequestParam(defaultValue = "0") int page) {
+        Pageable pageable = PageRequest.of(page, pageSize,  Sort.by("published").descending());
         return new ModelAndView("seznamAdmin").addObject("prispevky", postService.findAll(pageable));
     }
 
@@ -90,4 +93,11 @@ public class PostController {
         return "redirect:/admin";
     }
 
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
 }
